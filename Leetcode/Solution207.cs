@@ -1,5 +1,7 @@
 ﻿namespace Leetcode;
 
+//time: O(n)
+//mem: O(n)
 public class Solution207
 {
     public void Solve()
@@ -8,18 +10,18 @@ public class Solution207
         res = CanFinish(2, [[1, 0]]);
         Console.WriteLine(res);
     }
-    
-    public enum Color { Unvisited, Visiting, Visited }
+
+    private enum Color { Unvisited, Visiting, Visited }
     public bool CanFinish(int numCourses, int[][] prerequisites)
     {
         var adjacency = new List<int>[numCourses];
-        for (int i = 0; i < numCourses; i++)
+        for (var i = 0; i < numCourses; i++)
             adjacency[i] = [];
         foreach (var prerequisite in prerequisites) 
-            adjacency[prerequisite[0]].Add(prerequisite[1]);
+            adjacency[prerequisite[1]].Add(prerequisite[0]);
         
         Span<Color> colors=stackalloc Color[numCourses];
-        for (int i = 0; i < numCourses; i++)
+        for (var i = 0; i < numCourses; i++)
             if (HasCycle(i, colors, adjacency))
                 return false;
 
