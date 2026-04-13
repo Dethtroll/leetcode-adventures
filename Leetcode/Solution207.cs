@@ -14,40 +14,31 @@ public class Solution207
     {
         var adjacency = new List<int>[numCourses];
         for (int i = 0; i < numCourses; i++)
-        {
-            adjacency[i] = new List<int>();
-        }
-        
-        foreach (var prerequisite in prerequisites)
-        {
+            adjacency[i] = [];
+        foreach (var prerequisite in prerequisites) 
             adjacency[prerequisite[0]].Add(prerequisite[1]);
-        }
         
-        var colors = new int[numCourses];
+        Span<Color> colors=stackalloc Color[numCourses];
         for (int i = 0; i < numCourses; i++)
-        {
-            if (HasCyrcle(i, colors, adjacency))
+            if (HasCycle(i, colors, adjacency))
                 return false;
-        }
 
         return true;
     }
 
-    private bool HasCyrcle(int courseNumber, int[] colors, List<int>[] matrix)
+    private bool HasCycle(int courseNumber, Span<Color> colors, List<int>[] matrix)
     {
-        //серый
-        if (colors[courseNumber] == 1)
+        if (colors[courseNumber] == Color.Visiting)
             return true;
-        //черный
-        if (colors[courseNumber] == 2)
+        if (colors[courseNumber] == Color.Visited)
             return false;
 
         //Не посещали
-        colors[courseNumber] = 1;
+        colors[courseNumber] = Color.Visiting;
         foreach (var nextCourse in matrix[courseNumber])
-            if (HasCyrcle(nextCourse, colors, matrix))
+            if (HasCycle(nextCourse, colors, matrix))
                 return true;
-        colors[courseNumber] = 2;
+        colors[courseNumber] = Color.Visited;
 
         return false;
     }
