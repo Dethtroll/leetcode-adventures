@@ -1,0 +1,39 @@
+﻿namespace Leetcode;
+
+public class Solution3
+{
+    public void Solve()
+    {
+        var res = LengthOfLongestSubstring("abcabcbb");
+        Console.WriteLine(res);
+        res = LengthOfLongestSubstring("bbbbb");
+        Console.WriteLine(res);
+        res = LengthOfLongestSubstring("pwwkew");
+        Console.WriteLine(res);
+    }
+    public int LengthOfLongestSubstring(string s)
+    {
+        if (s.Length == 0)
+            return 0;
+        var max = 1;
+
+        var left = 0;
+        var right = 0;
+        var set = new HashSet<char> { s[0] };
+
+        while (left < s.Length)
+        {
+            while (right + 1 < s.Length && set.Add(s[right + 1]))
+            {
+                right++;
+            }
+
+            max = Math.Max(max, right - left + 1);
+
+            set.Remove(s[left]);
+            left++;
+        }
+
+        return max;
+    }
+}
