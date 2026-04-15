@@ -2,7 +2,7 @@
 
 public class Problem0019Test
 {
-    private readonly Solution0019 _solution = new();
+    private readonly Solution19 _solution = new();
 
     [Theory]
     [InlineData(new[] { 1, 2, 3, 4, 5 }, 2, new[] { 1, 2, 3, 5 })]
@@ -10,11 +10,11 @@ public class Problem0019Test
     [InlineData(new[] { 1, 2 }, 1, new[] { 1 })]
     public void TestForN(int[] input, int n, int[] output)
     {
-        var dummy = new ListNode();
+        var dummy = new Solution19.ListNode();
         var current = dummy;
         foreach (var item in input)
         {
-            current.next = new ListNode(item);
+            current.next = new Solution19.ListNode(item);
             current = current.next;
         }
 
@@ -30,7 +30,7 @@ public class Problem0019Test
     }
 }
 
-public class Solution0019
+public class Solution19
 {
     public ListNode RemoveNthFromEnd(ListNode head, int n)
     {
@@ -51,16 +51,16 @@ public class Solution0019
 
         return dummy.next;
     }
-}
 
-public class ListNode
-{
-    public int val;
-    public ListNode? next;
-
-    public ListNode(int val = 0, ListNode next = null)
+    public class ListNode
     {
-        this.val = val;
-        this.next = next;
+        public int val;
+        public ListNode? next;
+
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
