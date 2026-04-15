@@ -1,5 +1,30 @@
 ﻿namespace Leetcode;
 
+public class Problem0063Test
+{
+    private readonly Solution63 _solution = new();
+
+    [Fact]
+    public void LongTest()
+    {
+        int[][] input = [[0, 0, 0], [0, 1, 0], [0, 0, 0]];
+        
+        var result = _solution.UniquePathsWithObstacles(input);
+        
+        Assert.Equal(2, result);
+    }
+
+    [Fact]
+    public void ShortTest()
+    {
+        int[][] input = [[0, 1], [0, 0]];
+        
+        var result = _solution.UniquePathsWithObstacles(input);
+        
+        Assert.Equal(1, result);
+    }
+}
+
 public class Solution63
 {
     public void Solve()

@@ -1,16 +1,29 @@
 ﻿namespace Leetcode;
 
+public class Problem0207Test
+{
+    private readonly Solution207 _solution = new();
+
+    [Fact]
+    public void PositiveTest()
+    {
+        var result = _solution.CanFinish(2, [[1, 0], [0, 1]]);
+        
+        Assert.False(result);
+    }
+    [Fact]
+    public void ShortTest()
+    {
+        var result = _solution.CanFinish(2, [[1, 0]]);
+        
+        Assert.True(result);
+    }
+}
+
 //time: O(n)
 //mem: O(n)
 public class Solution207
 {
-    public void Solve()
-    {
-        var res = CanFinish(2, [[1, 0], [0, 1]]);
-        res = CanFinish(2, [[1, 0]]);
-        Console.WriteLine(res);
-    }
-
     private enum Color { Unvisited, Visiting, Visited }
     public bool CanFinish(int numCourses, int[][] prerequisites)
     {

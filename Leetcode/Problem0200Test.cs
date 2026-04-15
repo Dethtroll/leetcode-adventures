@@ -1,18 +1,44 @@
 ﻿namespace Leetcode;
 
-public class Solution200
+public class Problem0200Test
 {
-    public void Solve()
+    private readonly Solution200 _solution = new();
+
+    [Fact]
+    public void DifficultIslandTest()
     {
-        var res = NumIslands([
+        char[][] map =
+        [
             ['1', '1', '1', '1', '0'],
             ['1', '1', '0', '1', '0'],
             ['1', '1', '0', '0', '0'],
             ['0', '0', '0', '0', '0']
-        ]);
-        Console.WriteLine(res);
+        ];
+
+        var res = _solution.NumIslands(map);
+
+        Assert.Equal(1, res);
     }
 
+    [Fact]
+    public void ManyIslandsTest()
+    {
+        char[][] map =
+        [
+            ['1', '1', '0', '0', '0'],
+            ['1', '1', '0', '0', '0'],
+            ['0', '0', '1', '0', '0'],
+            ['0', '0', '0', '1', '1']
+        ];
+
+        var res = _solution.NumIslands(map);
+
+        Assert.Equal(3, res);
+    }
+}
+
+public class Solution200
+{
     public bool InBounds(int i, int j, char[][] grid)
     {
         if (i < 0 || j < 0 || i >= grid.Length || j >= grid[i].Length)

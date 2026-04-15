@@ -1,16 +1,23 @@
 ﻿namespace Leetcode;
 
+public class Problem0003Test
+{
+    private readonly Solution3 _solution = new();
+
+    [Theory]
+    [InlineData(3, "abcabcbb")]
+    [InlineData(1, "bbbbb")]
+    [InlineData(3, "pwwkew")]
+    public void Test(int target, string input)
+    {
+        var res = _solution.LengthOfLongestSubstring(input);
+        
+        Assert.Equal(target, res);
+    }
+}
+
 public class Solution3
 {
-    public void Solve()
-    {
-        var res = LengthOfLongestSubstring("abcabcbb");
-        Console.WriteLine(res);
-        res = LengthOfLongestSubstring("bbbbb");
-        Console.WriteLine(res);
-        res = LengthOfLongestSubstring("pwwkew");
-        Console.WriteLine(res);
-    }
     public int LengthOfLongestSubstring(string s)
     {
         if (s.Length == 0)

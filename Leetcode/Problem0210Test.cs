@@ -1,5 +1,38 @@
 ﻿namespace Leetcode;
 
+public class Problem0210Test
+{
+    private readonly Solution210 _solution = new();
+
+    [Fact]
+    public void PositiveTest()
+    {
+        int[][] source = [[1, 0], [2, 0], [3, 1], [3, 2]];
+
+        var res = _solution.FindOrder(4, source);
+
+        Assert.Equivalent(new[] { 0, 2, 1, 3 }, res);
+    }
+    [Fact]
+    public void EasyTest()
+    {
+        int[][] source = [[1, 0]];
+
+        var res = _solution.FindOrder(2, source);
+
+        Assert.Equivalent(new[] { 0, 1 }, res);
+    }
+    [Fact]
+    public void NegativeTest()
+    {
+        int[][] source = [];
+
+        var res = _solution.FindOrder(1, source);
+
+        Assert.Equivalent(new[] { 0 }, res);
+    }
+}
+
 //time: O(max(numCourses, len(prerequisites)))
 //mem: O(max(numCourses, len(prerequisites)))
 public class Solution210

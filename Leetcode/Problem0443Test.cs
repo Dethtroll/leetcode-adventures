@@ -1,27 +1,24 @@
 ﻿namespace Leetcode;
 
+public class Problem0443Test
+{
+    private readonly Solution443 _solution = new();
+
+    [Theory]
+    [InlineData(new[]{'a', 'a', 'b', 'b', 'c', 'c', 'c'}, 6, new[]{'a', '2', 'b', '2', 'c', '3'})]
+    [InlineData(new[]{'a'}, 1, new[]{'a'})]
+    [InlineData(new[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}, 4, new[]{'a', 'b', '1', '2'})]
+    public void TestForN(char[] input, int targetLen, char[] targetValue)
+    {
+        var result = _solution.Compress(input);
+
+        Assert.Equal(targetLen, result);
+        Assert.Equivalent(targetValue, input);
+    }
+}
+
 public class Solution443
 {
-    public void Solve()
-    {
-        char[] input = ['a', 'a', 'b', 'b', 'c', 'c', 'c'];
-        Console.WriteLine(string.Join(',', input));
-        var res = Compress(input);
-        Console.WriteLine(string.Join(',', input.Take(res)));
-        Console.WriteLine(res);
-
-        input = ['a'];
-        Console.WriteLine(string.Join(',', input));
-        res = Compress(input);
-        Console.WriteLine(string.Join(',', input.Take(res)));
-        Console.WriteLine(res);
-
-        input = ['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'];
-        Console.WriteLine(string.Join(',', input));
-        res = Compress(input);
-        Console.WriteLine(string.Join(',', input.Take(res)));
-        Console.WriteLine(res);
-    }
     public int Compress(char[] chars) {
         var left = 0;
         var pointer = 0;

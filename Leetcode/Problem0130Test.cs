@@ -1,14 +1,45 @@
 ﻿namespace Leetcode;
 
+public class Problem0130Test
+{
+    private readonly Solution130 _solution = new();
+
+    [Fact]
+    public void PositiveTest()
+    {
+        char[][] input = [
+            ['X', 'X', 'X', 'X'],
+            ['X', 'O', 'O', 'X'],
+            ['X', 'X', 'O', 'X'],
+            ['X', 'O', 'X', 'X']
+        ];
+
+        _solution.Solve(input);
+        
+        char[][] target = [
+            ['X', 'X', 'X', 'X'],
+            ['X', 'X', 'X', 'X'],
+            ['X', 'X', 'X', 'X'],
+            ['X', 'O', 'X', 'X']];
+        Assert.Equivalent(target, input);
+    }
+
+    [Fact]
+    public void EmptyTest()
+    {
+        char[][] input = [['X']];
+
+        _solution.Solve(input);
+        
+        char[][] target = [['X']];
+        Assert.Equivalent(target, input);
+    }
+}
+
 //time: O(m*n)
 //mem: O(m*n)
 public class Solution130
 {
-    public void Solve()
-    {
-        Solve([['X', 'X', 'X', 'X'], ['X', 'O', 'O', 'X'], ['X', 'X', 'O', 'X'], ['X', 'O', 'X', 'X']]);
-    }
-
     public void Solve(char[][] board)
     {
         var m = board.Length;
@@ -46,8 +77,6 @@ public class Solution130
         visited[row, col] = true;
         if (board[row][col] == 'X')
             return;
-
-        board[row][col] = 'X';
 
         Dfs(board, row - 1, col, visited);
         Dfs(board, row + 1, col, visited);
