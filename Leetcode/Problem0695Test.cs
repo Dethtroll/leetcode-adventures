@@ -1,10 +1,13 @@
 ﻿namespace Leetcode;
 
-public class Solution695
+public class Problem0695Test
 {
-    public void Solve()
+    private readonly Solution695 _solution = new();
+    
+    [Fact]
+    public void PositiveTest()
     {
-        var res = MaxAreaOfIsland([
+        int[][] source = [
             [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
             [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -13,9 +16,26 @@ public class Solution695
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0]
-        ]);
-        Console.WriteLine(res);
+        ];
+
+        var res = _solution.MaxAreaOfIsland(source);
+        
+        Assert.Equal(6, res);
     }
+    
+    [Fact]
+    public void NegativeTest()
+    {
+        int[][] source = [[0, 0, 0, 0, 0, 0, 0, 0]];
+
+        var res = _solution.MaxAreaOfIsland(source);
+        
+        Assert.Equal(0, res);
+    }
+}
+
+public class Solution695
+{
     public int MaxAreaOfIsland(int[][] grid)
     {
         var m = grid.Length;

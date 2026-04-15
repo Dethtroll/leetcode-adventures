@@ -1,18 +1,23 @@
 ﻿namespace Leetcode;
 
+public class Problem0849Test
+{
+    private readonly Solution849 _solution = new();
+
+    [Theory]
+    [InlineData(new int[] { 1, 0, 0, 0, 1, 0, 1 }, 2)]
+    [InlineData(new int[] { 1,0,0,0 }, 3)]
+    [InlineData(new int[] { 0,1 }, 1)]
+    public void TestForN(int[] input, int target)
+    {
+        var result = _solution.MaxDistToClosest(input);
+        
+        Assert.Equal(target, result);
+    }
+}
+
 public class Solution849
 {
-    public void Solve()
-    {
-        var res = MaxDistToClosest([1, 0, 0, 0, 1, 0, 1]);
-        Console.WriteLine(res);
-        
-        res = MaxDistToClosest([1,0,0,0]);
-        Console.WriteLine(res);
-        
-        res = MaxDistToClosest([0,1]);
-        Console.WriteLine(res);
-    }
     public int MaxDistToClosest(int[] seats)
     {
         var res = 0;

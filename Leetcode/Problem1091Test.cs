@@ -1,13 +1,44 @@
 ﻿namespace Leetcode;
 
-public class Solution1091
+public class Problem1091Test
 {
-    public void Solve()
+    private readonly Solution1091 _solution = new();
+
+    [Fact]
+    public void TestForShortArray()
     {
-        var res = ShortestPathBinaryMatrix([[0, 0, 0], [1, 1, 0], [1, 1, 0]]);
-        Console.WriteLine(res);
+        int[][] input = [[0, 1], [1, 0]];
+
+        var res = _solution.ShortestPathBinaryMatrix(input);
+
+        Assert.Equal(2, res);
     }
 
+    [Fact]
+    public void TestForPositive()
+    {
+        int[][] input = [[0, 0, 0], [1, 1, 0], [1, 1, 0]];
+
+        var res = _solution.ShortestPathBinaryMatrix(input);
+
+        Assert.Equal(4, res);
+    }
+
+    [Fact]
+    public void TestForNegative()
+    {
+        int[][] input =
+            [[1, 0, 0], [1, 1, 0], [1, 1, 0]];
+
+        var res = _solution.ShortestPathBinaryMatrix(input);
+
+        Assert.Equal(
+            -1, res);
+    }
+}
+
+public class Solution1091
+{
     public int ShortestPathBinaryMatrix(int[][] grid)
     {
         var n = grid.Length;
