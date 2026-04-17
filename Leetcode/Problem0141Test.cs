@@ -1,4 +1,6 @@
-﻿namespace Leetcode;
+﻿using Leetcode.Common;
+
+namespace Leetcode;
 
 public class Problem0141Test
 {
@@ -10,14 +12,14 @@ public class Problem0141Test
     [InlineData(new[] { 1 }, -1)]
     public void TestForN(int[] head, int pos)
     {
-        var dummy = new Solution141.ListNode(0);
+        var dummy = new ListNode(0);
         var current = dummy;
-        Solution141.ListNode? cycle = null;
+        ListNode? cycle = null;
         for (var index = 0; index < head.Length; index++)
         {
             var item = head[index];
 
-            current.next = new Solution141.ListNode(item);
+            current.next = new ListNode(item);
             current = current.next;
 
             if (index == pos)
@@ -48,17 +50,5 @@ public class Solution141
         }
         
         return false;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int x)
-        {
-            val = x;
-            next = null;
-        }
     }
 }

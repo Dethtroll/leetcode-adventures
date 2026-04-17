@@ -1,4 +1,7 @@
-﻿namespace Leetcode;
+﻿using Leetcode.Common;
+using Leetcode.Helpers;
+
+namespace Leetcode;
 
 public class Problem0143Test
 {
@@ -9,24 +12,17 @@ public class Problem0143Test
     [InlineData(new[] { 1, 2, 3, 4, 5 }, new[] { 1, 5, 2, 4, 3 })]
     public void TestForN(int[] input, int[] output)
     {
-        var dummy = new Solution143.ListNode();
-        var current = dummy;
-        foreach (var item in input)
-        {
-            current.next = new Solution143.ListNode(item);
-            current = current.next;
-        }
+        var list = input.ToLinkedList();
 
-        _solution.ReorderList(dummy.next!);
-
-        var result = dummy.next;
+        _solution.ReorderList(list!);
+        
         foreach (var val in output)
         {
-            Assert.Equal(result.val, val);
-            result = result.next;
+            Assert.Equal(list.val, val);
+            list = list.next;
         }
 
-        Assert.Null(result);
+        Assert.Null(list);
     }
 }
 
@@ -78,17 +74,5 @@ public class Solution143 {
         }
 
         return prev;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

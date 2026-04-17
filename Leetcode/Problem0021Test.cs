@@ -1,4 +1,7 @@
-﻿namespace Leetcode;
+﻿using Leetcode.Common;
+using Leetcode.Helpers;
+
+namespace Leetcode;
 
 public class Problem0021Test
 {
@@ -11,23 +14,10 @@ public class Problem0021Test
     [InlineData(new[] { 2 }, new[] { 1 }, new[] { 1, 2 })]
     public void TestForN(int[] input1, int[] input2, int[] output)
     {
-        var dummy1 = new Solution21.ListNode();
-        var current = dummy1;
-        foreach (var item in input1)
-        {
-            current.next = new Solution21.ListNode(item);
-            current = current.next;
-        }
+        var list1 = input1.ToLinkedList();
+        var list2 = input2.ToLinkedList();
         
-        var dummy2 = new Solution21.ListNode();
-        current = dummy2;
-        foreach (var item in input2)
-        {
-            current.next = new Solution21.ListNode(item);
-            current = current.next;
-        }
-
-        var result = _solution.MergeTwoLists(dummy1.next!, dummy2.next!);
+        var result = _solution.MergeTwoLists(list1!, list2!);
 
         foreach (var val in output)
         {
@@ -62,17 +52,5 @@ public class Solution21
         }
 
         return dummy.next!;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

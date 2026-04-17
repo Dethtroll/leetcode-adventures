@@ -1,4 +1,6 @@
 ﻿using System.Runtime.InteropServices;
+using Leetcode.Common;
+using Leetcode.Helpers;
 
 namespace Leetcode;
 
@@ -13,15 +15,9 @@ public class Problem0234Test
     [InlineData(new[] { 1, 2 }, false)]
     public void TestForN(int[] input, bool target)
     {
-        var dummy = new Solution234.ListNode();
-        var current = dummy;
-        foreach (var item in input)
-        {
-            current.next = new Solution234.ListNode(item);
-            current = current.next;
-        }
-
-        var result = _solution.IsPalindrome(dummy.next);
+        var list = input.ToLinkedList();
+        
+        var result = _solution.IsPalindrome(list!);
 
         Assert.Equal(target, result);
     }
@@ -70,17 +66,5 @@ public class Solution234 {
         }
 
         return prev;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

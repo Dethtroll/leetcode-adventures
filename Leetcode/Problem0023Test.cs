@@ -1,4 +1,7 @@
-﻿namespace Leetcode;
+﻿using Leetcode.Common;
+using Leetcode.Helpers;
+
+namespace Leetcode;
 
 public class Problem0023Test
 {
@@ -6,21 +9,14 @@ public class Problem0023Test
 
     private void BaseTest(int[][] inputs, int[] output)
     {
-        var list = new List<Solution23.ListNode>(); 
+        var nodes = new List<ListNode>(); 
         foreach (var input in inputs)
         {
-            var dummy = new Solution23.ListNode();
-            var current = dummy;
-            foreach (var item in input)
-            {
-                current.next = new Solution23.ListNode(item);
-                current = current.next;
-            }
-
-            list.Add(dummy.next!);
+            var list = input.ToLinkedList();
+            nodes.Add(list!);
         }
 
-        var result = _solution.MergeKLists(list.ToArray());
+        var result = _solution.MergeKLists(nodes.ToArray());
 
         foreach (var val in output)
         {
@@ -78,17 +74,5 @@ public class Solution23 {
         }
         
         return dummy.next!;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

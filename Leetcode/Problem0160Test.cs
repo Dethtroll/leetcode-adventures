@@ -1,4 +1,6 @@
-﻿namespace Leetcode;
+﻿using Leetcode.Common;
+
+namespace Leetcode;
 
 public class Problem0160Test
 {
@@ -10,31 +12,31 @@ public class Problem0160Test
     [InlineData(new[] { 2,6,4 }, 3, new[] { 1,5 }, 2)]
     public void TestForN(int[] listA, int skipA, int[] listB, int skipB)
     {
-        var dummyA = new Solution160.ListNode(0);
+        var dummyA = new ListNode(0);
         var currentA = dummyA;
         foreach (var item in listA.Take(skipA))
         {
-            currentA.next = new Solution160.ListNode(item);
+            currentA.next = new ListNode(item);
             currentA = currentA.next;
         }
 
-        var dummyB = new Solution160.ListNode(0);
+        var dummyB = new ListNode(0);
         var currentB = dummyB;
         foreach (var item in listB.Take(skipB))
         {
-            currentB.next = new Solution160.ListNode(item);
+            currentB.next = new ListNode(item);
             currentB = currentB.next;
         }
 
-        Solution160.ListNode? intersect = null;
-        Solution160.ListNode? common = null;
+        ListNode? intersect = null;
+        ListNode? common = null;
         if (listA.Length > skipA)
         {
             foreach (var item in listA.Skip(skipA))
             {
                 if (intersect == null)
                 {
-                    intersect = new Solution160.ListNode(item);
+                    intersect = new ListNode(item);
 
                     currentA.next = intersect;
                     currentB.next = intersect;
@@ -42,7 +44,7 @@ public class Problem0160Test
                 }
                 else
                 {
-                    common.next = new Solution160.ListNode(item);
+                    common.next = new ListNode(item);
                     common = common.next;
                 }
             }
@@ -75,16 +77,5 @@ public class Solution160 {
         }
 
         return pointerA;
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int x)
-        {
-            val = x;
-        }
     }
 }
