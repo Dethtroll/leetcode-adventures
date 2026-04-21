@@ -9,7 +9,7 @@ public class Problem0100Test
 
     private void BaseTest(int?[] left, int?[] right, bool target)
     {
-        var result = _solution.IsSameTree(left.ToTree()!, right.ToTree()!);
+        var result = _solution.IsSameTree(left.ToBinTree()!, right.ToBinTree()!);
         
         Assert.Equal(target, result);
     }

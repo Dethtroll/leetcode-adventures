@@ -9,7 +9,7 @@ public class Problem0145Test
 
     private void BaseTest(int?[] input, int[] expected)
     {
-        var tree = input.ToTree();
+        var tree = input.ToBinTree();
         
         var resultStack = _solution.PostorderTraversal(tree);
         var resultRecursive = _solution.PostorderTraversalRecursive(tree);

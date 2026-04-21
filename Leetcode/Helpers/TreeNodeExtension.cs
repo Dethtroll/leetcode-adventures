@@ -4,7 +4,7 @@ namespace Leetcode.Helpers;
 
 public static class TreeNodeExtension
 {
-    public static TreeNode? ToTree(this int?[] data)
+    public static TreeNode? ToBinTree(this int?[] data)
     {
         return GetNode(0, data);
     }

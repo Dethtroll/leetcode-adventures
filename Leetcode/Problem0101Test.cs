@@ -9,7 +9,7 @@ public class Problem0101Test
 
     private void BaseTest(int?[] input, bool target)
     {
-        var result = _solution.IsSymmetric(input.ToTree());
+        var result = _solution.IsSymmetric(input.ToBinTree());
         
         Assert.Equal(target, result);
     }

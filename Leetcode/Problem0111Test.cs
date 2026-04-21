@@ -9,7 +9,7 @@ public class Problem0111Test
 
     private void BaseTest(int?[] input, int target)
     {
-        var result = _solution.MinDepth(input.ToTree()!);
+        var result = _solution.MinDepth(input.ToBinTree()!);
         
         Assert.Equal(target, result);
     }

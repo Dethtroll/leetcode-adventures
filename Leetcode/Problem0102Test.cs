@@ -9,7 +9,7 @@ public class Problem0102Test
 
     private void BaseTest(int?[] input, List<List<int>> expected)
     {
-        var tree = input.ToTree();
+        var tree = input.ToBinTree();
         
         var result = _solution.LevelOrder(tree!);
         

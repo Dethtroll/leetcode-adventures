@@ -9,7 +9,7 @@ public class Problem0112Test
 
     private void BaseTest(int?[] input, int sum, bool target)
     {
-        var result = _solution.HasPathSum(input.ToTree()!, sum);
+        var result = _solution.HasPathSum(input.ToBinTree()!, sum);
         
         Assert.Equal(target, result);
     }

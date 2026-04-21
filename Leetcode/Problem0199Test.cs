@@ -12,7 +12,7 @@ public class Problem0199Test
     {
         int?[] input = [1, 2, 3, null, 5, null, 4];
 
-        var result = _solution.RightSideView(input.ToTree()!);
+        var result = _solution.RightSideView(input.ToBinTree()!);
         
         Assert.Equal([1,3,4], result);
     }
@@ -22,7 +22,7 @@ public class Problem0199Test
     {
         int?[] input = [1,2,3,4,null,null,null,5];
 
-        var result = _solution.RightSideView(input.ToTree()!);
+        var result = _solution.RightSideView(input.ToBinTree()!);
         
         Assert.Equal([1,3,4,5], result);
     }
@@ -32,7 +32,7 @@ public class Problem0199Test
     {
         int?[] input = [1,null,3];
 
-        var result = _solution.RightSideView(input.ToTree()!);
+        var result = _solution.RightSideView(input.ToBinTree()!);
         
         Assert.Equal([1,3], result);
     }
@@ -42,7 +42,7 @@ public class Problem0199Test
     {
         int?[] input = [];
 
-        var result = _solution.RightSideView(input.ToTree()!);
+        var result = _solution.RightSideView(input.ToBinTree()!);
         
         Assert.Equal([], result);
     }

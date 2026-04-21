@@ -9,7 +9,7 @@ public class Problem0107Test
 
     private void BaseTest(int?[] input, int[][] target)
     {
-        var result = _solution.LevelOrderBottom(input.ToTree());
+        var result = _solution.LevelOrderBottom(input.ToBinTree());
         
         Assert.Equal(target, result);
     }
