@@ -6,7 +6,6 @@ namespace Leetcode;
 
 public class Problem0234Test
 {
-    
     private readonly Solution234 _solution = new();
 
     [Theory]
