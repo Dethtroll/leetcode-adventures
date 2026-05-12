@@ -19,15 +19,23 @@ public class Problem0287Test
 public class Solution287 {
     public int FindDuplicate(int[] nums)
     {
-        var hash = new int[nums.Length + 1];
-        foreach (var num in nums)
-        {
-            if (hash[num] > 0)
-                return num;
+        var slow = 0;
+        var fast = 0;
 
-            hash[num]++;
+        do
+        {
+            slow =  nums[slow];
+            fast = nums[nums[fast]];
+            
+        } while (slow != fast);
+
+        slow = 0;
+        while (slow != fast)
+        {
+            slow =  nums[slow];
+            fast = nums[fast];
         }
         
-        return 0;
+        return slow;
     }
 }
